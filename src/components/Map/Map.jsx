@@ -26,7 +26,7 @@ export default function Map() {
         setPlace(position)
         mapRef.current.panTo(position)
     }
-
+    
     return (
         <section className="container">
             <Places movePlace={movePlace} />
@@ -37,7 +37,7 @@ export default function Map() {
                 options={options}
                 onLoad={onLoad}
             >
-                <Marker position={center} />
+                {place && <Marker position={place} />}
             </GoogleMap>
         </section>
     )
