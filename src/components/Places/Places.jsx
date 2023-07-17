@@ -2,8 +2,17 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 
 import "./Places.css"
 
-export default function Places({ setPlace }) {
+export default function Places({ movePlace }) {
     const { ready, value, setValue, suggestions: { status, data }, clearSuggestions } = usePlacesAutocomplete()
+
+    const handleClick = async (description) => {
+        setValue(description, false)
+        clearSuggestions()
+
+        const results = await getGeocode({ address: description })
+        const { lat, lng } = await getLatLng(results[0])
+        movePlace({ lat, lng })
+    }
 
     return (
         <div className="results-container">
@@ -19,7 +28,7 @@ export default function Places({ setPlace }) {
                     return <li
                         key={place_id}
                         className="result-item"
-                        onClick={e => setValue("")}
+                        onClick={() => handleClick(description)}
                     >{description}</li>
                 })}
             </ul>
