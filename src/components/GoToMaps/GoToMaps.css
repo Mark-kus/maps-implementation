@@ -1,0 +1,8 @@
+.go-to-maps {
+    position: absolute;
+}
+
+.go-to-maps > a {
+    color: black;
+    text-decoration: none;
+}
