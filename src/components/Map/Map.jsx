@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import "./Map.css"
 import Places from "../Places/Places";
 import BlockMap from "../BlockMap/BlockMap";
+import GoToMaps from "../GoToMaps/GoToMaps";
 
 
 export default function Map() {
@@ -106,7 +107,7 @@ export default function Map() {
                 } 
 
             <BlockMap setMoreOptions={setMoreOptions} />
-
+            <GoToMaps />
             </GoogleMap>
         </section>
     )
