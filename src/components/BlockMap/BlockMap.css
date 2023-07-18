@@ -1,0 +1,8 @@
+.block-button {
+    position: absolute;
+    z-index: 100;
+
+    width: 50px;
+    bottom: 0;
+    right: 0;
+}

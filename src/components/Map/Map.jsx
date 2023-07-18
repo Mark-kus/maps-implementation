@@ -3,12 +3,14 @@ import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 
 import "./Map.css"
 import Places from "../Places/Places";
+import BlockMap from "../BlockMap/BlockMap";
 import TagPlace from "../TagPlace/TagPlace";
 
 
 export default function Map() {
     const [place, setPlace] = useState(null)
     const [center, setCenter] = useState({ lat: 43, lng: -80 });
+    const [moreOptions, setMoreOptions] = useState({})
 
     // console.log(place)
     const mapRef = useRef()
@@ -21,8 +23,9 @@ export default function Map() {
     const options = useMemo(() => ({
         // mapId: "aa6d78ce255fd795", // Not such a secret
         disableDefaultUI: true,
-        clickableIcons: false
-    }), [])
+        clickableIcons: false,
+        ...moreOptions
+    }), [moreOptions])
 
     // Sets a ref to the map
     const onLoad = useCallback(map => {
@@ -106,6 +109,9 @@ export default function Map() {
                     position={place} 
                     />
                 } 
+
+            <BlockMap setMoreOptions={setMoreOptions} />
+
             </GoogleMap>
         </section>
     )
