@@ -3,11 +3,13 @@ import Map from "./components/Map/Map"
 
 const { VITE_API_KEY } = import.meta.env
 
+const libraries = ["places"]
+
 function App() {
   // Loads the script for the google map
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: VITE_API_KEY,
-    libraries: ["places"]
+    libraries: libraries
   })
 
   // While loading, shows something else

@@ -11,7 +11,9 @@ export default function Places({ movePlace }) {
         clearSuggestions()
 
         const results = await getGeocode({ address: description })
+        
         const { lat, lng } = getLatLng(results[0])
+        console.log({ lat, lng })
         movePlace({ lat, lng })
     }
 
