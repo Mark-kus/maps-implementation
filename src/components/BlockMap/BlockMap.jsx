@@ -5,7 +5,7 @@ import unlocked from '../../assets/unlocked.svg'
 import { useState } from "react"
 
 export default function BlockMap({ setMoreOptions }) {
-    const [blocked, setBlocked] = useState(false)
+    const [blocked, setBlocked] = useState(true)
 
     const handleClick = () => {
         setMoreOptions({
