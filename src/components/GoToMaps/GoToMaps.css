@@ -1,5 +1,6 @@
 .go-to-maps {
     position: absolute;
+    bottom: 0;
 }
 
 .go-to-maps > a {
