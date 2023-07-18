@@ -3,6 +3,7 @@ import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 
 import "./Map.css"
 import Places from "../Places/Places";
+import TagPlace from "../TagPlace/TagPlace";
 
 
 export default function Map() {
@@ -57,6 +58,13 @@ export default function Map() {
     mapRef.current.panTo(position);
     },[]);
 
+    const handleTagPlace = (label) => {
+        if (place) {
+          // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
+          console.log("Etiqueta:", label);
+          console.log("Ubicación:", place);
+        }
+    };
 
     // const handleMouseMove = useCallback(
     //     (event)=>{
@@ -82,13 +90,10 @@ export default function Map() {
     //     }
     // },[onMapDrag]);
 
-
-
-    
     return (
         <section className="container">
             <Places  movePlace={movePlace} /> 
-           
+            <TagPlace onTagPlace={handleTagPlace} />
             <GoogleMap
                 zoom={10}
                 center={center}
