@@ -9,7 +9,8 @@ export default function BlockMap({ setMoreOptions }) {
 
     const handleClick = () => {
         setMoreOptions({
-            draggable: !blocked
+            gestureHandling: blocked ? "none" : null,
+            keyboardShortcuts: blocked ? false : true,
         })
         setBlocked(!blocked)
     }
