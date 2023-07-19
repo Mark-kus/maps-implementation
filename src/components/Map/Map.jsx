@@ -7,7 +7,7 @@ import Places from "../Places/Places";
 import BlockMap from "../BlockMap/BlockMap";
 import GoToMaps from "../GoToMaps/GoToMaps";
 import TagPlace from "../TagPlace/TagPlace";
-
+import CenterMarker from "../CenterMarker/CenterMarker"
 
 export default function Map() {
     const [place, setPlace] = useState(null)
@@ -117,6 +117,7 @@ export default function Map() {
                     </>      
                 )} 
 
+            {/* <CenterMarker />    */}
             <BlockMap setMoreOptions={setMoreOptions} />
             <GoToMaps />
             </GoogleMap>
