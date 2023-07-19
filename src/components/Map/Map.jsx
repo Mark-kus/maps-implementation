@@ -117,7 +117,7 @@ export default function Map() {
                     </>      
                 )} 
 
-            {/* <CenterMarker />    */}
+            <CenterMarker />   
             <BlockMap setMoreOptions={setMoreOptions} />
             <GoToMaps />
             </GoogleMap>
