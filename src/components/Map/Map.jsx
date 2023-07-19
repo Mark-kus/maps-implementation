@@ -2,6 +2,7 @@ import { GoogleMap, Marker} from "@react-google-maps/api";
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 
 import "./Map.css"
+import "../TagPlace/TagPlace.css"
 import Places from "../Places/Places";
 import BlockMap from "../BlockMap/BlockMap";
 import GoToMaps from "../GoToMaps/GoToMaps";
@@ -17,8 +18,6 @@ export default function Map() {
     const mapRef = useRef()
     const cursorMarkerRef = useRef(null); // Ref for the cursor marker
 
-    // Ubication of first appearance
-    // const center = useMemo(() => ({ lat: 43, lng: -80 }), [])
 
     // Map options and base style ID
     const options = useMemo(() => ({
@@ -64,9 +63,15 @@ export default function Map() {
 
     const handleTagPlace = (label) => {
         if (place) {
-          // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
-          console.log("Etiqueta:", label);
-          console.log("Ubicación:", place);
+        // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
+        //   console.log("Etiqueta:", label);
+        //   console.log("Ubicación:", place);
+        
+        const updatePlace = {
+            ...place,
+            label: label,
+        };
+        setPlace(updatePlace)
         }
     };
 
@@ -97,7 +102,7 @@ export default function Map() {
     return (
         <section className="container">
             <Places  movePlace={movePlace} /> 
-            <TagPlace onTagPlace={handleTagPlace} />
+            <TagPlace onTag={handleTagPlace} />
             <GoogleMap
                 zoom={10}
                 center={center}
@@ -105,11 +110,12 @@ export default function Map() {
                 options={options}
                 onLoad={onLoad}
             >
-                {place && 
-                    <Marker 
-                    position={place} 
-                    />
-                } 
+                {place && (              
+                    <>
+                        <Marker position={place} />
+                        <div className='tag-label'>{place.label}</div>
+                    </>      
+                )} 
 
             <BlockMap setMoreOptions={setMoreOptions} />
             <GoToMaps />

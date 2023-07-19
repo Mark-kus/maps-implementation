@@ -1,29 +1,64 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-export default function TagPlace({ onTagPlace }) {
-  const [label, setLabel] = useState("");
+export default function TagPlace({ onTag }) {
 
-  const handleLabelChange = (e) => {
-    setLabel(e.target.value);
-  };
+  const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef(null);
+  const containerRef = useRef(null);
 
-  const handleTagPlace = () => {
-    if (label) {
-      onTagPlace(label);
-      setLabel("");
+  useEffect(() => {
+    inputRef.current.focus(); // Automatically focus on the input when the component mounts
+  }, []);
+
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onTag(inputValue);
+      inputRef.current.blur()
     }
   };
 
+  const handleChange = (e) => {
+    setInputValue(e.target.textContent.trim());
+  };
+
+  useEffect(() => {
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(inputRef.current);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    inputRef.current.focus();
+  }, [inputValue]);
+
+  const handleBlur = () => {
+    if (inputValue.trim() === "") {
+      // Si el contenido está vacío al perder el foco, se restaura el placeholder
+      containerRef.current.classList.add("placeholder");
+    } else {
+      containerRef.current.classList.remove("placeholder");
+    }
+  }
+
   return (
-    <div className="tag-place-container">
-      <input
-        type="text"
-        value={label}
-        onChange={handleLabelChange}
-        placeholder="Ingresa una etiqueta para el lugar"
-        className="label-input"
-      />
-      <button onClick={handleTagPlace}>Etiquetar lugar</button>
+    <div className="tag-place-container" ref={containerRef}>
+
+    <div
+        ref={inputRef}
+        contentEditable
+        suppressContentEditableWarning
+        // type="text"
+        // value={inputValue}
+        onInput={handleChange}
+        onKeyDown={handleKeyPress}
+        className= {`label-input ${inputValue ? "" : "placeholder"}`}
+        onBlur={handleBlur}
+        data-placeholder="Etiqueta el lugar aqui"
+    >
+    {inputValue}
+    </div>
     </div>
   );
 }

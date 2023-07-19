@@ -7,22 +7,3 @@
     height: 95vh;
 }
 
-.tag-place-container {
-    position: absolute;
-    top: 20px; /* Ajusta la posición vertical del componente TagPlace */
-    left: 20px; /* Ajusta la posición horizontal del componente TagPlace */
-    background-color: white; /* Puedes personalizar el estilo del contenedor */
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1; /* Asegura que el componente esté encima del mapa */
-  }
-  
-  .label-input {
-    width: 200px;
-    margin-right: 10px;
-  }
-  
-  button {
-    cursor: pointer;
-  }
