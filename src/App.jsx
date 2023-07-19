@@ -1,5 +1,6 @@
 import { useLoadScript } from "@react-google-maps/api"
 import Map from "./components/Map/Map"
+import Loader from "./components/Loader/Loader"
 
 const { VITE_API_KEY } = import.meta.env
 
@@ -13,7 +14,7 @@ function App() {
   })
 
   // While loading, shows something else
-  if (!isLoaded) return <div>Loading</div>
+  if (!isLoaded) return <div className="map-replacement"><Loader /></div>
   
   return <Map />
 }

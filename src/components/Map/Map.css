@@ -2,8 +2,17 @@
     display: flex;
 }
 
-.map-container {
-    width: 95vw;
-    height: 95vh;
+.map-container, .map-replacement {
+    position: relative;
+
+    width: 60vw;
+    height: 60vh;
 }
 
+.map-replacement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: gray;
+}
