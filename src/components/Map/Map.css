@@ -16,3 +16,9 @@
 
     background-color: gray;
 }
+
+.label {
+    background-color: black;
+    padding: 4px;
+    border-radius: 6px;
+}
