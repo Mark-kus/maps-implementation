@@ -5,8 +5,8 @@
 .map-container, .map-replacement {
     position: relative;
 
-    width: 60vw;
-    height: 60vh;
+    width: 500px;
+    height: 500px;
 }
 
 .map-replacement {
