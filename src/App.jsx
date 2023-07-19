@@ -13,7 +13,7 @@ function App() {
     libraries: libraries
   })
 
-  // While loading, shows something else
+  // While loading, shows a Loader
   if (!isLoaded) return <div className="map-replacement"><Loader /></div>
   
   return <Map />
