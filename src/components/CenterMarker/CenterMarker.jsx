@@ -8,7 +8,7 @@ export default function CenterMarker() {
                 src="https://maps.google.com/mapfiles/kml/paddle/red-circle.png"
                 width={40}
                 height={40}
-                alt="Market at the center of the map" />
+                alt="Marker at the center of the map" />
         </div>
     )
 }
