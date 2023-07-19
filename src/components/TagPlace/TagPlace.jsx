@@ -7,16 +7,14 @@ export default function TagPlace({ onTag }) {
   const inputRef = useRef(null);
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    inputRef.current.focus(); // Automatically focus on the input when the component mounts
-  }, []);
-
-
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault();
-      onTag(inputValue);
+      // e.preventDefault();
       inputRef.current.blur()
+      if (inputValue.length) {
+        onTag(inputValue);
+        setInputValue(null)
+      }
     }
   };
 
@@ -46,7 +44,7 @@ export default function TagPlace({ onTag }) {
   return (
     <div className="tag-place-container" ref={containerRef}>
 
-    <div
+      <div
         ref={inputRef}
         contentEditable
         suppressContentEditableWarning
@@ -54,12 +52,12 @@ export default function TagPlace({ onTag }) {
         // value={inputValue}
         onInput={handleChange}
         onKeyDown={handleKeyPress}
-        className= {`label-input ${inputValue ? "" : "placeholder"}`}
+        className={`label-input ${inputValue ? "" : "placeholder"}`}
         onBlur={handleBlur}
         data-placeholder="Etiqueta el lugar aqui"
-    >
-    {inputValue}
-    </div>
+      >
+        {inputValue}
+      </div>
     </div>
   );
 }
