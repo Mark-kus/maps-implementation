@@ -1,29 +1,9 @@
-.tag-place-container {
-    position: absolute;
-    bottom: 14px; /* So it doesn't block google maps buttons */
-    left: 2px;
-    background-color: white; 
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1; 
-    width: fit-content;
-  }
-  
-  .label-input {
-    outline: none;
-    white-space: nowrap;
-    color: #000;
-    font-size: large;
-    font-weight: bold;
-  }
-  
-  .label-input.placeholder::before {
-    content: attr(data-placeholder);
-    color: #666666;
-    font-size: large;
-  }
+ .label-input {
+   width: 300px;
 
-  button {
-    cursor: pointer;
-  }
+   position: absolute;
+   bottom: 14px;   /* So it doesn't block google maps buttons */
+   outline: none;
+   white-space: nowrap;
+   color: #000;
+ }
