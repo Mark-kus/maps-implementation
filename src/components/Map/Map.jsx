@@ -2,7 +2,6 @@ import { GoogleMap, Marker} from "@react-google-maps/api";
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 
 import "./Map.css"
-import "../TagPlace/TagPlace.css"
 import Places from "../Places/Places";
 import BlockMap from "../BlockMap/BlockMap";
 import GoToMaps from "../GoToMaps/GoToMaps";
@@ -101,8 +100,6 @@ export default function Map() {
 
     return (
         <section className="container">
-            <Places  movePlace={movePlace} /> 
-            <TagPlace onTag={handleTagPlace} />
             <GoogleMap
                 zoom={10}
                 center={center}
@@ -110,6 +107,9 @@ export default function Map() {
                 options={options}
                 onLoad={onLoad}
             >
+            <Places  movePlace={movePlace} /> 
+            <TagPlace onTag={handleTagPlace} />
+
                 {place && (              
                     <>
                         <Marker position={place} />
