@@ -1,8 +1,7 @@
 .tag-place-container {
-    
     position: absolute;
-    bottom: 90px;
-    left: 40px; 
+    bottom: 2px;
+    left: 2px;
     background-color: white; 
     padding: 10px;
     border-radius: 8px;
@@ -28,5 +27,3 @@
   button {
     cursor: pointer;
   }
-
-
