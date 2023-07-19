@@ -1,0 +1,15 @@
+.loading-ring {
+    animation: spin 1.5s linear infinite;
+
+    width: 8rem;
+    height: 8rem;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
