@@ -97,7 +97,7 @@ export default function Map({ size }) {
                         height: `${height}px`,
                     }}
                 >
-                    <CenterMarker />
+                    <CenterMarker size={size} />
 
                     {place.length && (
                         <>

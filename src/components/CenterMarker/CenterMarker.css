@@ -1,7 +1,3 @@
 .center-marker {
-    /* Center the marker to the middle of the map */
     position: absolute;
-
-    top: 210px;
-    left: 230px;
 }
