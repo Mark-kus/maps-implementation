@@ -86,7 +86,7 @@ export default function Map({ size }) {
 
         const href = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
             `geo:${marker.lat},${marker.lng}?z=${zoom}&q=${marker.lat},${marker.lng}(label+label)` :
-            `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}, 10z`
+            `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}`
 
         const anchor = document.createElement("a")
         anchor.target = "_blank"
