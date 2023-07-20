@@ -1,9 +1,9 @@
 import "./FindMe.css"
 import marker from "../../assets/marker.svg"
 
-export default function FindMe() {
+export default function FindMe({ movePlace }) {
 
-    const findUser = ({ movePlace }) => {
+    const findUser = () => {
         // Asks permission to get user's location and moves to it
         navigator.geolocation.getCurrentPosition(
             (e) => {
