@@ -1,0 +1,11 @@
+.find-button {
+    position: absolute;
+    z-index: 12;
+
+    bottom: 14px;
+    right: 24px;
+
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
