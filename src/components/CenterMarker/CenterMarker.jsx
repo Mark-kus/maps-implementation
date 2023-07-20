@@ -33,7 +33,6 @@ export default function CenterMarker({ size }) {
                 src="https://maps.google.com/mapfiles/kml/paddle/red-circle.png"
                 width={40}
                 height={40}
-                draggable={false}
                 alt="Marker at the center of the map" />
         </div>
     )
