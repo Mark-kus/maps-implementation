@@ -7,6 +7,7 @@ import BlockMap from "../BlockMap/BlockMap";
 import GoToMaps from "../GoToMaps/GoToMaps";
 import TagPlace from "../TagPlace/TagPlace";
 import CenterMarker from "../CenterMarker/CenterMarker"
+import FindMe from "../FindMe/FindMe";
 
 export default function Map({ size }) {
 
@@ -43,8 +44,9 @@ export default function Map({ size }) {
     // Al arrastrar y soltar rapido, toma la posicion al soltar mientras continua moviendose
     const [place, setPlace] = useState([])
     const [moreOptions, setMoreOptions] = useState({})
+    const [center, setCenter] = useState({ lat: 43, lng: -80 })
+    const [zoom, setZoom] = useState(10)
 
-    const center = useRef({ lat: 43, lng: -80 })
     const mapRef = useRef()
 
     // Map options and base style ID
@@ -58,18 +60,18 @@ export default function Map({ size }) {
     const onLoad = useCallback(map => {
         // Sets a ref to the map
         mapRef.current = map;
-    }, [center.current])
+    }, [center])
 
     const onMapDrag = useCallback(() => {
         // Sets the center.current to the new center
         const mapCenter = mapRef.current.getCenter();
-        center.current = { lat: mapCenter.lat(), lng: mapCenter.lng() };
+        setZoom(mapRef.current.zoom)
+        setCenter({ lat: mapCenter.lat(), lng: mapCenter.lng() })
     }, []);
-
 
     const movePlace = useCallback((position) => {
         // Sets place to somewhere and moves map to it
-        center.current = position
+        setCenter(position)
         mapRef.current.panTo(position);
     }, []);
 
@@ -77,7 +79,7 @@ export default function Map({ size }) {
         // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
         setPlace([
             ...place,
-            { position: center.current, label },
+            { position: center, label },
         ])
     };
 
@@ -116,15 +118,13 @@ export default function Map({ size }) {
                         </>
                     )}
 
-                    <CenterMarker />
-                    <BlockMap setMoreOptions={setMoreOptions} />
-                    <GoToMaps />
-                    
-
-                </GoogleMap>
+                <CenterMarker />
+                <BlockMap setMoreOptions={setMoreOptions} />
+                <GoToMaps />
+            </GoogleMap>
             </div>
 
-        </div>
+</div>
     )
 }
 
