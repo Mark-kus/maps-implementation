@@ -1,13 +1,17 @@
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete"
+import search from "../../assets/search.svg"
 
 import "./Places.css"
+import { useState } from "react"
 
 export default function Places({ movePlace }) {
+    const [show, setShow] = useState(false)
     const { ready, value, setValue, suggestions: { status, data }, clearSuggestions } = usePlacesAutocomplete()
 
     const handleClick = async (description) => {
         // Clears suggests and moves the map to that location
         setValue(description, false)
+        setShow(false)
         clearSuggestions()
 
         const results = await getGeocode({ address: description })
@@ -18,7 +22,10 @@ export default function Places({ movePlace }) {
 
     return (
         <>
-            <div className="results-container">
+        <button onClick={() => setShow(!show)} className="search-button">
+            <img src={search} alt="open search by name input button image" />
+        </button>
+            {show && <div className="results-container">
                 <input
                     type="text"
                     value={value}
@@ -35,7 +42,7 @@ export default function Places({ movePlace }) {
                         >{description}</li>
                     })}
                 </ul>
-            </div>
+            </div>}
         </>
     )
 }
