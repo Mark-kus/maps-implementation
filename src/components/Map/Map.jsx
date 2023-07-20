@@ -7,14 +7,16 @@ import BlockMap from "../BlockMap/BlockMap";
 import GoToMaps from "../GoToMaps/GoToMaps";
 import TagPlace from "../TagPlace/TagPlace";
 import CenterMarker from "../CenterMarker/CenterMarker"
+import FindMe from "../FindMe/FindMe";
 
 export default function Map() {
     // Error: 
     // Al arrastrar y soltar rapido, toma la posicion al soltar mientras continua moviendose
     const [place, setPlace] = useState([])
     const [moreOptions, setMoreOptions] = useState({})
+    const [center, setCenter] = useState({ lat: 43, lng: -80 })
+    const [zoom, setZoom] = useState(10)
 
-    const center = useRef({ lat: 43, lng: -80 })
     const mapRef = useRef()
 
     // Map options and base style ID
@@ -28,18 +30,18 @@ export default function Map() {
     const onLoad = useCallback(map => {
         // Sets a ref to the map
         mapRef.current = map;
-    }, [center.current])
+    }, [center])
 
     const onMapDrag = useCallback(() => {
         // Sets the center.current to the new center
         const mapCenter = mapRef.current.getCenter();
-        center.current = { lat: mapCenter.lat(), lng: mapCenter.lng() };
+        setZoom(mapRef.current.zoom)
+        setCenter({ lat: mapCenter.lat(), lng: mapCenter.lng() })
     }, []);
-
 
     const movePlace = useCallback((position) => {
         // Sets place to somewhere and moves map to it
-        center.current = position
+        setCenter(position)
         mapRef.current.panTo(position);
     }, []);
 
@@ -47,22 +49,21 @@ export default function Map() {
         // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
         setPlace([
             ...place,
-            { position: center.current, label },
+            { position: center, label },
         ])
     };
 
     return (
         <section className="container">
             <GoogleMap
-                zoom={10}
-                center={center.current}
+                zoom={zoom}
+                center={center}
                 mapContainerClassName="map-container"
                 options={options}
                 onLoad={onLoad}
                 onDragEnd={onMapDrag}
             >
-                <Places movePlace={movePlace} />
-                <TagPlace onTag={handleTagPlace} />
+                <CenterMarker />
 
                 {place.length && (
                     <>
@@ -79,9 +80,14 @@ export default function Map() {
                     </>
                 )}
 
-                <CenterMarker />
+                {/* Menu */}
+                <Places movePlace={movePlace} />
+                <TagPlace onTag={handleTagPlace} />
+                <FindMe movePlace={movePlace} />
                 <BlockMap setMoreOptions={setMoreOptions} />
-                <GoToMaps />
+                <GoToMaps center={center} zoom={zoom} />
+                {/* Menu */}
+
             </GoogleMap>
         </section>
     )
