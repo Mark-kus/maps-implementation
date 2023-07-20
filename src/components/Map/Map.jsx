@@ -81,11 +81,11 @@ export default function Map({ size }) {
         ])
     };
 
-    const redirectMaps = (e) => {
+    const redirectMaps = (e, label) => {
         const marker = {lat: e.latLng.lat(), lng: e.latLng.lng()}
 
         const href = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
-            `geo:${marker.lat},${marker.lng}?z=${zoom}&q=${marker.lat},${marker.lng}(label+label)` :
+            `geo:${marker.lat},${marker.lng}?q=${marker.lat},${marker.lng}(${label})` :
             `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}`
 
         const anchor = document.createElement("a")
@@ -119,7 +119,7 @@ export default function Map({ size }) {
                                 return <Marker
                                     key={i}
                                     position={place.position}
-                                    onClick={redirectMaps}
+                                    onClick={(e) => redirectMaps(e, place.label)}
                                     label={{
                                         text: place.label,
                                         className: "label",
