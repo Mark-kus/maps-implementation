@@ -49,7 +49,7 @@ export default function Map({ size }) {
 
     // Map options and base style ID
     const options = useMemo(() => ({
-        // mapId: "aa6d78ce255fd795", // Not such a secret
+        mapId: "f97918e421621763", // Not such a secret
         disableDefaultUI: true,
         clickableIcons: false,
         ...moreOptions
@@ -81,6 +81,20 @@ export default function Map({ size }) {
         ])
     };
 
+    const redirectMaps = (e) => {
+        const marker = {lat: e.latLng.lat(), lng: e.latLng.lng()}
+
+        const href = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
+            `geo:${marker.lat},${marker.lng}?z=${zoom}&q=${marker.lat},${marker.lng}(label+label)` :
+            `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}, 10z`
+
+        const anchor = document.createElement("a")
+        anchor.target = "_blank"
+        anchor.href = href
+        anchor.click()
+        anchor.remove()
+    }
+
     return (
 
         <div className="map-sidetoside-container">
@@ -105,6 +119,7 @@ export default function Map({ size }) {
                                 return <Marker
                                     key={i}
                                     position={place.position}
+                                    onClick={redirectMaps}
                                     label={{
                                         text: place.label,
                                         className: "label",
