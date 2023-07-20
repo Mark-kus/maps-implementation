@@ -1,13 +1,17 @@
 .container {
+    background-color: darkslategray;
+    width: 600px;
     display: flex;
-
+    flex-direction: column;
 }
 
-.map-container, .map-replacement {
+.group-container {
+    display: flex;
+}
+
+.map, .map-replacement {
     position: relative;
     display: flex;
-    
-
 }
 
 .map-replacement {
@@ -23,13 +27,7 @@
     border-radius: 6px;
 }
 
-.map-sidetoside {
-    margin-bottom: 20px;
-    
+.map-container {
+    margin: 4px;
+    border: black 1px solid;
 }
-
-.map-sidetoside-container {
-    
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    margin-bottom: 20px; 
-  }

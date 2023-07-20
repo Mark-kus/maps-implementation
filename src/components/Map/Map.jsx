@@ -82,7 +82,7 @@ export default function Map({ size }) {
     };
 
     const redirectMaps = (e, label) => {
-        const marker = {lat: e.latLng.lat(), lng: e.latLng.lng()}
+        const marker = { lat: e.latLng.lat(), lng: e.latLng.lng() }
 
         const href = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
             `geo:${marker.lat},${marker.lng}?q=${marker.lat},${marker.lng}(${label})` :
@@ -96,50 +96,46 @@ export default function Map({ size }) {
     }
 
     return (
+        <div className="map-container" style={{ width: `${width}px`, height: `${height}px` }}>
+            <GoogleMap
+                zoom={zoom}
+                center={center}
+                mapContainerClassName="map"
+                options={options}
+                onLoad={onLoad}
+                onDragEnd={onMapDrag}
+                mapContainerStyle={{
+                    width: `${width}px`,
+                    height: `${height}px`,
+                }}
+            >
+                <CenterMarker size={size} />
 
-        <div className="map-sidetoside-container">
-            <div className="map-sidetoside" style={{ width: `${width}px`, height: `${height}px` }}>
-                <GoogleMap
-                    zoom={zoom}
-                    center={center}
-                    mapContainerClassName="map-container"
-                    options={options}
-                    onLoad={onLoad}
-                    onDragEnd={onMapDrag}
-                    mapContainerStyle={{
-                        width: `${width}px`,
-                        height: `${height}px`,
-                    }}
-                >
-                    <CenterMarker size={size} />
+                {place.length && (
+                    <>
+                        {place.map((place, i) => {
+                            return <Marker
+                                key={i}
+                                position={place.position}
+                                onClick={(e) => redirectMaps(e, place.label)}
+                                label={{
+                                    text: place.label,
+                                    className: "label",
+                                    color: "white"
+                                }} />
+                        })}
+                    </>
+                )}
 
-                    {place.length && (
-                        <>
-                            {place.map((place, i) => {
-                                return <Marker
-                                    key={i}
-                                    position={place.position}
-                                    onClick={(e) => redirectMaps(e, place.label)}
-                                    label={{
-                                        text: place.label,
-                                        className: "label",
-                                        color: "white"
-                                    }} />
-                            })}
-                        </>
-                    )}
+                {/* Menu */}
+                <Places movePlace={movePlace} />
+                <TagPlace onTag={handleTagPlace} />
+                <FindMe movePlace={movePlace} />
+                <BlockMap setMoreOptions={setMoreOptions} />
+                <GoToMaps center={center} zoom={zoom} />
+                {/* Menu */}
 
-                    {/* Menu */}
-                    <Places movePlace={movePlace} />
-                    <TagPlace onTag={handleTagPlace} />
-                    <FindMe movePlace={movePlace} />
-                    <BlockMap setMoreOptions={setMoreOptions} />
-                    <GoToMaps center={center} zoom={zoom} />
-                    {/* Menu */}
-
-                </GoogleMap>
-            </div>
-
+            </GoogleMap>
         </div>
     )
 }
