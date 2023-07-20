@@ -1,4 +1,5 @@
 import "./GoToMaps.css"
+import leave from "../../assets/leave.svg"
 
 export default function GoToMaps() {
 
@@ -7,6 +8,10 @@ export default function GoToMaps() {
         "https://www.google.com/maps/dir/?api=1"
 
     return (
-        <button className="go-to-maps"><a href={href} target="_blank">Open Maps</a></button>
+        <button className="go-to-maps">
+            <a href={href} target="_blank">
+                <img src={leave} alt="go to maps button image" />
+            </a>
+        </button>
     )
 }
