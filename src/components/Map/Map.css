@@ -1,19 +1,19 @@
 .container {
     display: flex;
+
 }
 
 .map-container, .map-replacement {
     position: relative;
+    display: flex;
+    
 
-    width: 500px;
-    height: 500px;
 }
 
 .map-replacement {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: gray;
 }
 
@@ -22,3 +22,14 @@
     padding: 4px;
     border-radius: 6px;
 }
+
+.map-sidetoside {
+    margin-bottom: 20px;
+    
+}
+
+.map-sidetoside-container {
+    
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    margin-bottom: 20px; 
+  }

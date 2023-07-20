@@ -14,9 +14,34 @@ function App() {
   })
 
   // While loading, shows a Loader
-  if (!isLoaded) return <div className="map-replacement"><Loader /></div>
+  // if (!isLoaded) return <div className="map-replacement"><Loader /></div>
+  if (!isLoaded) return null;
   
-  return <Map />
+  return (
+    <div className="container">
+
+    
+        {/* Map with size 190x190 */}
+        <Map size="small" />
+      
+        
+       
+        {/* Map with size 390x190 */}
+        <Map size="horizontal" />
+       
+
+      
+        {/* Map with size 190x390 */}
+        <Map size="vertical" />
+        
+
+       
+        {/* Map with size 390x390 */}
+        <Map size="large" />
+       
+
+    </div>
+  )
 }
 
 export default App

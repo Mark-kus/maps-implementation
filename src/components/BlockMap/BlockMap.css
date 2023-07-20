@@ -1,6 +1,5 @@
 .block-button {
     position: absolute;
-
     width: 50px;
     bottom: 14px; /* So it doesn't block google maps buttons */
     right: 0;

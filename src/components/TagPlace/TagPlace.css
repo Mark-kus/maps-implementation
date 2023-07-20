@@ -1,7 +1,7 @@
  .label-input {
    width: auto;
-   position: absolute;
-   bottom: 14px;   /* So it doesn't block google maps buttons */
+   position: absolute; 
+   bottom: 14px;   /* So it doesn't block google maps buttons  */
    outline: none;
    white-space: nowrap;
    color: #000;

@@ -8,7 +8,37 @@ import GoToMaps from "../GoToMaps/GoToMaps";
 import TagPlace from "../TagPlace/TagPlace";
 import CenterMarker from "../CenterMarker/CenterMarker"
 
-export default function Map() {
+export default function Map({ size }) {
+
+    let width, height;
+
+    switch (size) {
+
+        case "small":
+        width = 190;
+        height =190;
+        break;
+
+        case "horizontal":
+        width = 390;
+        height = 190;
+        break;
+
+        case "vertical":
+        width = 190;
+        height = 390;
+        break;
+        
+        case "large":
+        default:
+        width = 390;
+        height = 390;
+        break;
+
+    }
+
+
+
     // Error: 
     // Al arrastrar y soltar rapido, toma la posicion al soltar mientras continua moviendose
     const [place, setPlace] = useState([])
@@ -52,38 +82,49 @@ export default function Map() {
     };
 
     return (
-        <section className="container">
-            <GoogleMap
-                zoom={10}
-                center={center.current}
-                mapContainerClassName="map-container"
-                options={options}
-                onLoad={onLoad}
-                onDragEnd={onMapDrag}
-            >
-                <Places movePlace={movePlace} />
-                <TagPlace onTag={handleTagPlace} />
 
-                {place.length && (
-                    <>
-                        {place.map((place, i) => {
-                            return <Marker
-                                key={i}
-                                position={place.position}
-                                label={{
-                                    text: place.label,
-                                    className: "label",
-                                    color: "white"
-                                }} />
-                        })}
-                    </>
-                )}
+        <div className="map-sidetoside-container">
+            <div className="map-sidetoside" style={{ width: `${width}px`, height: `${height}px` }}>
+                <GoogleMap
+                    zoom={10}
+                    center={center.current}
+                    mapContainerClassName="map-container"
+                    options={options}
+                    onLoad={onLoad}
+                    onDragEnd={onMapDrag}
+                    mapContainerStyle={{
+                        width: `${width}px`,
+                        height: `${height}px`,
+                    }}
+                >
+           
+                    <Places movePlace={movePlace} />
+                    <TagPlace onTag={handleTagPlace} />
 
-                <CenterMarker />
-                <BlockMap setMoreOptions={setMoreOptions} />
-                <GoToMaps />
-            </GoogleMap>
-        </section>
+                    {place.length && (
+                        <>
+                            {place.map((place, i) => {
+                                return <Marker
+                                    key={i}
+                                    position={place.position}
+                                    label={{
+                                        text: place.label,
+                                        className: "label",
+                                        color: "white"
+                                    }} />
+                            })}
+                        </>
+                    )}
+
+                    <CenterMarker />
+                    <BlockMap setMoreOptions={setMoreOptions} />
+                    <GoToMaps />
+                    
+
+                </GoogleMap>
+            </div>
+
+        </div>
     )
 }
 
