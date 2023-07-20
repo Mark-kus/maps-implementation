@@ -16,21 +16,9 @@ export default function Places({ movePlace }) {
         movePlace({ lat, lng })
     }
 
-    const findUser = () => {
-        // Asks permission to get user's location and moves to it
-        navigator.geolocation.getCurrentPosition(
-            (e) => {
-                movePlace({ lat: e.coords.latitude, lng: e.coords.longitude })
-            },
-            (err) => {
-                console.log(err);
-            })
-    }
-
     return (
         <>
             <div className="results-container">
-                <button onClick={findUser}>FindMe</button>
                 <input
                     type="text"
                     value={value}
