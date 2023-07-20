@@ -16,7 +16,7 @@ export default function FindMe() {
 
     return (
         <button className="find-button" onClick={findUser}>
-            <img src={marker} alt="" />
+            <img src={marker} alt="find me button image" />
         </button>
     )
 }
