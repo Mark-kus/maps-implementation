@@ -16,32 +16,30 @@ export default function Map({ size }) {
     switch (size) {
 
         case "small":
-        width = 190;
-        height =190;
-        break;
+            width = 190;
+            height = 190;
+            break;
 
         case "horizontal":
-        width = 390;
-        height = 190;
-        break;
+            width = 390;
+            height = 190;
+            break;
 
         case "vertical":
-        width = 190;
-        height = 390;
-        break;
-        
+            width = 190;
+            height = 390;
+            break;
+
         case "large":
         default:
-        width = 390;
-        height = 390;
-        break;
+            width = 390;
+            height = 390;
+            break;
 
     }
 
-
-
     // Error: 
-    // Al arrastrar y soltar rapido, toma la posicion al soltar mientras continua moviendose
+    // Al cambiar zoom no cambia el centro
     const [place, setPlace] = useState([])
     const [moreOptions, setMoreOptions] = useState({})
     const [center, setCenter] = useState({ lat: 43, lng: -80 })
@@ -88,8 +86,8 @@ export default function Map({ size }) {
         <div className="map-sidetoside-container">
             <div className="map-sidetoside" style={{ width: `${width}px`, height: `${height}px` }}>
                 <GoogleMap
-                    zoom={10}
-                    center={center.current}
+                    zoom={zoom}
+                    center={center}
                     mapContainerClassName="map-container"
                     options={options}
                     onLoad={onLoad}
@@ -99,9 +97,7 @@ export default function Map({ size }) {
                         height: `${height}px`,
                     }}
                 >
-           
-                    <Places movePlace={movePlace} />
-                    <TagPlace onTag={handleTagPlace} />
+                    <CenterMarker />
 
                     {place.length && (
                         <>
@@ -118,13 +114,18 @@ export default function Map({ size }) {
                         </>
                     )}
 
-                <CenterMarker />
-                <BlockMap setMoreOptions={setMoreOptions} />
-                <GoToMaps />
-            </GoogleMap>
+                    {/* Menu */}
+                    <Places movePlace={movePlace} />
+                    <TagPlace onTag={handleTagPlace} />
+                    <FindMe movePlace={movePlace} />
+                    <BlockMap setMoreOptions={setMoreOptions} />
+                    <GoToMaps center={center} zoom={zoom} />
+                    {/* Menu */}
+
+                </GoogleMap>
             </div>
 
-</div>
+        </div>
     )
 }
 
