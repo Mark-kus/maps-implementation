@@ -5,11 +5,42 @@
     flex-direction: column;
 }
 
+/* Removes labels and tags at the bottom of map */
+/* NOTE: https://cloud.google.com/maps-platform/terms/ says that isn't quite legal */
+
+/* .gmnoprint a,
+.gmnoprint span,
+.gm-style-cc {
+    display: none;
+} */
+
+/* .gmnoprint div {
+    background: none !important;
+} */
+
+/* Removes most tags */
+.gmnoprint {
+    display: none;
+}
+
+/* Removes the "report error" tag (experimental) */
+/* div.gm-style-cc:has(a) {
+    display: none;
+} */
+
+/* Cancels the removement of the Copyright tag */
+div > :nth-child(2).gmnoprint {
+    display: block;
+}
+
+/* Removes labels and tags at the bottom of map */
+
 .group-container {
     display: flex;
 }
 
-.map, .map-replacement {
+.map,
+.map-replacement {
     position: relative;
     display: flex;
 }
