@@ -1,46 +1,73 @@
 .results-container {
-    background-color: bisque;
+    background-color: rgb(232, 255, 196);
 
     position: absolute;
-    bottom: 40px; 
-    
-    /* So it doesn't block google maps buttons */
-
-    right: 42px;
+    top: 48px;
 
     display: flex;
-    flex-direction: column-reverse;
-    
-    width: 140px;
-    margin: 0 8px;
+    flex-direction: column;
+
+    /* width: 190px; */
+    z-index: 1;
 }
 
 .search-button {
     position: absolute;
-    bottom: 38px;
-    right: 24px;
+    top: 24px;
 
     padding: 0;
     width: 24px;
     height: 24px;
 }
 
-.search-button > img {
+.search-button>img {
     width: 20px;
     height: 20px;
 }
 
-.results-container > ul {
+.results-container>ul {
+    /* Largest is all the map, smallest is until the tag input */
+    max-height: 320px;
+    /* max-height: 285px; */
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
+/* Scrollbar of places list */
+
+/* width */
+.results-container>ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+.results-container>ul::-webkit-scrollbar-track {
+    background: rgb(183, 201, 154);
+}
+
+/* Handle */
+.results-container>ul::-webkit-scrollbar-thumb {
+    background: rgb(118, 129, 99);
+}
+
+/* Handle on hover */
+.results-container>ul::-webkit-scrollbar-thumb:hover {
+    background: rgb(94, 107, 72);
+}
+
+/* Scrollbar of places list */
+
 .result-item {
-    padding: 2px;
+    padding: 4px;
 }
 
 .result-item:hover {
-    background-color: slategray;
+    cursor: pointer;
+    background-color: rgb(39, 83, 128);
     color: white;
 }

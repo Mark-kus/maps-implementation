@@ -128,7 +128,7 @@ export default function Map({ size }) {
                 )}
 
                 {/* Menu */}
-                <Places movePlace={movePlace} />
+                <Places movePlace={movePlace} size={size} />
                 <TagPlace onTag={handleTagPlace} />
                 <FindMe movePlace={movePlace} />
                 <BlockMap setMoreOptions={setMoreOptions} />
