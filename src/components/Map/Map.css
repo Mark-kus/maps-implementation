@@ -18,6 +18,11 @@
     background: none !important;
 } */
 
+/* Removes google image at bottom of the map */
+a[href^="https://maps.google.com/maps"] {
+    display: none !important
+}
+
 /* Removes most tags */
 .gmnoprint {
     display: none;
