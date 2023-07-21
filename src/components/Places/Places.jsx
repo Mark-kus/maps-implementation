@@ -58,8 +58,9 @@ export default function Places({ movePlace, size }) {
                     disabled={!ready}
                     onChange={e => setValue(e.target.value)}
                     placeholder="Busca tu ubicacion"
+                    onBlur={() => setShow(!show)}
                 />
-                <ul style={data.length ? { height, width } : { width }}>
+                <ul style={data.length ? { height, width } : { width }} >
                     {status === "OK" && data.map(({ place_id, description }) => {
                         return <li
                             key={place_id}
