@@ -89,7 +89,8 @@ export default function Map({ size }) {
             `geo:${marker.lat},${marker.lng}?q=${marker.lat},${marker.lng}(${label})` :
 
             /iPhone|iPad|iPod/i.test(navigator.userAgent) ?
-                `http://maps.google.com/maps?q=${marker.lat},${marker.lng}+(${label})&z=${zoom}&ll=${marker.lat},${marker.lng}` :
+                `http://maps.google.com/maps?q=${marker.lat},${marker.lng}&z=${zoom}&ll=${marker.lat},${marker.lng}` :
+                // Pregunta: "este link de iOS, te deja un marcador en el centro al abrirlo?"
 
                 `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}`
 

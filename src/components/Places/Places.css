@@ -18,6 +18,9 @@
     padding: 0;
     width: 24px;
     height: 24px;
+
+    /* En el ultimo intento, la lupa estaba corrida unos 10px a la derecha del boton, saliendose de el */
+    border: solid 1px black;
 }
 
 .search-button>img {
