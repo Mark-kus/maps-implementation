@@ -9,9 +9,8 @@ export default function GoToMaps({ center, zoom }) {
 
         /iPhone|iPad|iPod/i.test(navigator.userAgent) ?
         `http://maps.apple.com/?ll=${center.lat},${center.lng}` :
-        // Possible alternatives
+        // Possible alternative
         // maps://maps.google.com/maps?daddr=<lat>,<long>
-        // http://maps.google.com/maps?q=39.211374,-82.978277+(${label})&z=14&ll=39.211374,-82.978277
 
         `https://www.google.com/maps/@${center.lat},${center.lng},${zoom}z`
         // NOTE: Docs says it MUST have ?api=1 on https response, but with it, it doesn't works as I want

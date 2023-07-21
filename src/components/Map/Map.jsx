@@ -84,9 +84,14 @@ export default function Map({ size }) {
     const redirectMaps = (e, label) => {
         const marker = { lat: e.latLng.lat(), lng: e.latLng.lng() }
 
-        const href = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
+        // Checks if is Android, iOS or desktop, so it opens the app or the browser maps
+        const href = /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ?
             `geo:${marker.lat},${marker.lng}?q=${marker.lat},${marker.lng}(${label})` :
-            `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}`
+
+            /iPhone|iPad|iPod/i.test(navigator.userAgent) ?
+                `http://maps.google.com/maps?q=${marker.lat},${marker.lng}+(${label})&z=${zoom}&ll=${marker.lat},${marker.lng}` :
+
+                `https://www.google.com/maps/search/?api=1&query=${marker.lat},${marker.lng}`
 
         const anchor = document.createElement("a")
         anchor.target = "_blank"
