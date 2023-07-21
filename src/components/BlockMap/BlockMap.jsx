@@ -20,8 +20,8 @@ export default function BlockMap({ setMoreOptions }) {
             onClick={handleClick}
             className="block-button">
             {blocked ?
-                <img className="block-image" src={unlocked} alt="unlocked icon for unblocking map movement" />
-                : <img className="block-image" src={locked} alt="locked icon for blocking map movement" />
+                <img src={unlocked} alt="unlocked icon for unblocking map movement" />
+                : <img src={locked} alt="locked icon for blocking map movement" />
             }
         </button>
     )

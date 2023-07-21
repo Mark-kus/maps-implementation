@@ -4,9 +4,16 @@
     width: 24px;
     height: 24px;
     padding: 0;
+
+    border: lightgreen solid 1px;
 }
 
 .go-to-maps > a {
     color: black;
     text-decoration: none;
+}
+
+.go-to-maps img {
+    width: 20px;
+    height: 20px;
 }
