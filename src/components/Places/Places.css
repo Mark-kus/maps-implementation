@@ -20,7 +20,8 @@
     height: 24px;
 
     /* En el ultimo intento, la lupa estaba corrida unos 10px a la derecha del boton, saliendose de el */
-    border: solid 1px black;
+    background-color: white;
+    border: #141414 1px solid;
 }
 
 .search-button>img {

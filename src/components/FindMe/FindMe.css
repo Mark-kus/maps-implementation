@@ -9,7 +9,8 @@
     height: 24px;
     padding: 0;
 
-    border: solid 1px lightseagreen;
+    background: white;
+    border: #141414 1px solid;
 }
 
 .find-button > img {
