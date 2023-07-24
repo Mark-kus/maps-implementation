@@ -11,6 +11,8 @@
 
     background: white;
     border: #141414 1px solid;
+    border-top: none;
+    border-left: none;
 }
 
 .find-button > img {
