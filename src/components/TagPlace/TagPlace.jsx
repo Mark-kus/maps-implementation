@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from "react";
+import tag from "../../assets/tag.svg";
 import "./TagPlace.css"
 
 export default function TagPlace({ onTag, size }) {
+  const [show, setShow] = useState(false)
   const [inputValue, setInputValue] = useState("");
   // const [originalSize, setOriginalSize] = useState(10);
   // const inputRef = useRef();
@@ -59,7 +61,14 @@ export default function TagPlace({ onTag, size }) {
   if (size === "large" || size === "horizontal") width = "166px"
 
   return (
-    <input
+    <>
+    <button onClick={()=> setShow(!show)} className="tag-button">
+      <img src={tag} alt="open tag-place"/>
+    </button>
+
+    {show && <div className= "tag-container"> 
+      
+      <input
       type="text"
       value={inputValue}
       placeholder="Etiqueta el lugar aqui"
@@ -67,7 +76,11 @@ export default function TagPlace({ onTag, size }) {
       onChange={handleChange}
       onKeyDown={handleKeyPress}
       style={{ width }}
-    // ref={inputRef}
-    />
+      // ref={inputRef}
+      />
+      
+    </div>}
+
+    </>
   )
 }

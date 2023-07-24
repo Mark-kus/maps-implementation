@@ -1,4 +1,39 @@
- .label-input {
-   position: absolute;
+ /* .label-input {
+   position: relative;
    bottom: 0;
- }
+ } */
+
+ .tag-container {
+  background-color: rgb(232, 255, 196);
+
+  position: absolute;
+  top: 1px;
+  right: 143px;
+
+  display: flex;
+  flex-direction: column;
+
+  /* width: 190px; */
+  z-index: 1;
+}
+
+.tag-button {
+  position: absolute;
+  top: 1px;
+  right: 317px;
+
+  padding: 0;
+  width: 24px;
+  height: 24px;
+
+  /* En el ultimo intento, la lupa estaba corrida unos 10px a la derecha del boton, saliendose de el */
+  /* border: solid 1px black; */
+}
+
+.tag-button>img {
+  width: 20px;
+  height: 20px;
+}
+
+
+
