@@ -14,6 +14,7 @@ export default function TagPlace({ onTag, size }) {
       setInputValue("")
       setShow(false)
     }
+    // If the user press Esc, the input goes off
     if (e.key === "Escape") setShow(false)
   };
 
