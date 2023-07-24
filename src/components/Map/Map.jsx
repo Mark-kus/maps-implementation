@@ -67,17 +67,23 @@ export default function Map({ size }) {
         setCenter({ lat: mapCenter.lat(), lng: mapCenter.lng() })
     }, []);
 
-    const movePlace = useCallback((position) => {
+    const movePlace = useCallback((position, label) => {
         // Sets place to somewhere and moves map to it
-        setCenter(position)
+        // setCenter(position)
+        // mapRef.current.panTo(position);
+
+        setCenter(position);
+        setPlace((prevPlaces) => [...prevPlaces, { position, label }]); // Agregar la ubicación seleccionada al estado place
         mapRef.current.panTo(position);
-    }, []);
+
+    }, [setPlace]);
 
     const handleTagPlace = (label) => {
         // Aquí puedes guardar la etiqueta y la ubicación en tu estado o enviarla a algún servidor, base de datos, etc.
         setPlace([
             ...place,
             { position: center, label },
+            // { position, label }
         ])
     };
 
@@ -134,7 +140,7 @@ export default function Map({ size }) {
                 )}
 
                 {/* Menu */}
-                <Places movePlace={movePlace} onTag={handleTagPlace} size={size} />
+                <Places movePlace={movePlace} size={size} />
                 <TagPlace onTag={handleTagPlace} size={size} />
                 <FindMe movePlace={movePlace} />
                 <BlockMap setMoreOptions={setMoreOptions} />

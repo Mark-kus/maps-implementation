@@ -4,7 +4,7 @@ import search from "../../assets/search.svg"
 import "./Places.css"
 import { useState } from "react"
 
-export default function Places({ movePlace, handleTagPlace, size }) {
+export default function Places({ movePlace, size }) {
     const [show, setShow] = useState(false)
     const { ready, value, setValue, suggestions: { status, data }, clearSuggestions } = usePlacesAutocomplete()
 
@@ -18,6 +18,7 @@ export default function Places({ movePlace, handleTagPlace, size }) {
 
         const { lat, lng } = getLatLng(results[0])
         movePlace({ lat, lng })
+        handleTagPlace('')
     }
 
     const handleKeyDown = (e) => {
