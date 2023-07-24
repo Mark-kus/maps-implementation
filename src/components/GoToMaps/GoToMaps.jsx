@@ -17,7 +17,7 @@ export default function GoToMaps({ center, zoom }) {
 
         return (
         <button className="go-to-maps">
-            <a href={href} target="_blank">
+            <a href={href} target="_blank" rel="noreferrer">
                 <img src={leave} alt="go to maps button image" />
             </a>
         </button>
