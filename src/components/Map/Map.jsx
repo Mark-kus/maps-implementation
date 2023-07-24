@@ -58,7 +58,7 @@ export default function Map({ size }) {
     const onLoad = useCallback(map => {
         // Sets a ref to the map
         mapRef.current = map;
-    }, [center])
+    }, [])
 
     const onMapDrag = useCallback(() => {
         // Sets the center.current to the new center
@@ -97,6 +97,7 @@ export default function Map({ size }) {
         const anchor = document.createElement("a")
         anchor.target = "_blank"
         anchor.href = href
+        anchor.rel = "noreferrer"
         anchor.click()
         anchor.remove()
     }

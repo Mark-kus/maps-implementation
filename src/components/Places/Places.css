@@ -21,6 +21,10 @@
     width: 24px;
     height: 24px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     /* En el ultimo intento, la lupa estaba corrida unos 10px a la derecha del boton, saliendose de el */
     background-color: white;
     border: #141414 1px solid;

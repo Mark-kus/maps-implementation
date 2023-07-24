@@ -12,6 +12,13 @@
 .go-to-maps > a {
     color: black;
     text-decoration: none;
+
+    width: auto;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .go-to-maps img {
