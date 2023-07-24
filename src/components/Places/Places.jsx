@@ -20,26 +20,30 @@ export default function Places({ movePlace, handleTagPlace, size }) {
         movePlace({ lat, lng })
     }
 
+    const handleKeyDown = (e) => {
+        // If the user press Esc, the input goes off
+        if (e.key === "Escape") setShow(false)
+    }
+
     // If map has small height, sets a limit so it appears a scrollbar
     let height, width = "100%"
     switch (size) {
         case "small":
             height = "121px"
+            width = "190px"
+            break
 
         case "vertical":
             width = "190px"
-
             break;
 
         case "horizontal":
             height = "121px"
             width = "390px"
-
             break
 
         case "large":
             width = "390px"
-
             break
 
         default:
@@ -57,6 +61,7 @@ export default function Places({ movePlace, handleTagPlace, size }) {
                     value={value}
                     disabled={!ready}
                     onChange={e => setValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     placeholder="Busca tu ubicacion"
                     onBlur={() => setShow(!show)}
                 />

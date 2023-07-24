@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
 
-    border: none;
+    background-color: white;
+    border: #141414 1px solid;
 }
 
 .block-button > img {

@@ -1,33 +1,24 @@
- /* .label-input {
-   position: relative;
-   bottom: 0;
- } */
+ .label-input {
+   position: absolute;
+   left: 72px;
 
- .tag-container {
-  background-color: rgb(232, 255, 196);
-
-  position: absolute;
-  top: 1px;
-  right: 143px;
-
-  display: flex;
-  flex-direction: column;
-
-  /* width: 190px; */
-  z-index: 1;
-}
+   height: 18px;
+ }
 
 .tag-button {
   position: absolute;
-  top: 1px;
-  right: 317px;
+  left: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   padding: 0;
   width: 24px;
   height: 24px;
 
-  /* En el ultimo intento, la lupa estaba corrida unos 10px a la derecha del boton, saliendose de el */
-  /* border: solid 1px black; */
+  background-color: white;
+  border: #141414 1px solid;
 }
 
 .tag-button>img {
