@@ -58,6 +58,7 @@ export default function Places({ movePlace, size }) {
             </button>
             {show && <div className="results-container">
                 <input
+                autoFocus
                     type="text"
                     value={value}
                     disabled={!ready}
